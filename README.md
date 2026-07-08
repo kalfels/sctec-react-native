@@ -1,3 +1,3 @@
 # sctec-react-native
-Criando repo para aulas da SCTEC
-PRIMEIRA ALTERAÇÃO DO README
+
+Repositório criado durante nossa primeira aula de GitHub
