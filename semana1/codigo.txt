@@ -1,0 +1,22 @@
+INICIO
+
+	contante quantidade_cafe = 5mg
+       constante quantidade_agua = 50mg
+       booleano açúcar = não
+       contante quantidade_acucar = 15mg
+ 
+	pegar café
+       colocar quantidade_cafe na maquina de cafe
+       Colocar quantidade_agua na maquina de cafe
+
+       Se açúcar = sim
+       	colocar quantidade_acucar na maquina de cafe
+       
+       Ligar a maquina
+	esperar esquentar
+       delisgar a maquina
+       
+       pegar xicara 
+	servir
+
+FIM
