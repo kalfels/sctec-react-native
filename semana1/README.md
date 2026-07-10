@@ -61,4 +61,4 @@ else:
 
 Emojis
 
-Olá, estou no modo dev :vulcan_salute
+Olá, estou no modo dev :hand
