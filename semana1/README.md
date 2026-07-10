@@ -35,3 +35,17 @@ Inserir MarkDown Image:
 
 Inserir Links:
 [Acesse minha pagina](https://bitserv.com.br)
+
+Tabelas:
+
+Num | Nome | Nota
+---|---|---
+1|Gustavo|8,5
+2|José|10,0
+3|Maria|9,0
+
+Terminou a tabela
+
+Comandos:
+
+Não entendo direito para que serve o comando `document.getElementById()` da linguagem JavaScript
