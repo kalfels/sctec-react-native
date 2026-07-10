@@ -48,4 +48,13 @@ Terminou a tabela
 
 Comandos:
 
-Não entendo direito para que serve o comando `document.getElementById()` da linguagem JavaScript
+Não entendo direito para que serve o comando `document.getElementById()` da linguagem JavaScript`
+
+Meu programa em python
+```
+num = int(input('Digite um valor:'))
+if num % 2 == 0:
+    print(f'O valor {num} é PAR')
+else:
+    print(f'O valor {num} é ÍMPAR')
+```
