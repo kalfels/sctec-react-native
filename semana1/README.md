@@ -30,4 +30,8 @@ Lista de Tarefas:
 - [] Combinar pagamento;
 
 Inserir MarkDown Image:
+
 ![Imagem da Bitserv](https://bitserv.com.br/assets/img/logo.png)
+
+Inserir Links:
+[Acesse minha pagina](https://bitserv.com.br)
