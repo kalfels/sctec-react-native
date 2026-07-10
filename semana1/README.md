@@ -58,3 +58,7 @@ if num % 2 == 0:
 else:
     print(f'O valor {num} é ÍMPAR')
 ```
+
+Emojis
+
+Olá, estou no modo dev :vulcan_salute
