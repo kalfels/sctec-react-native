@@ -20,13 +20,14 @@ const precos = [80, 150, 950, 4200, 320];
 let tela = texto => console.log(texto);
 
 const produtos = precos.every((preco) => preco > 50) 
-    ? `Os produtos verificados custam mais que R$ 50,00` 
-    : `Os produtos verificados possuem um ou mais com valor abaixo de R$ 50,00`;
+    ? `Produtos verificados custam mais que R$ 50,00` 
+    : `Produtos verificados possuem um ou mais com valor abaixo de R$ 50,00`;
 tela(produtos);
 
-const produtosAcima = precos.some((preco) => preco > 4000);
-const resposta2 = (produtosAcima === true) ? `Um ou mais produtos foram encontrados acima de R$ 4.000,00` : `Nenhum produto foi encontrado acima de R$ 4.000,00`;
-console.log(resposta2);
+const produtosAcima = precos.some((preco) => preco > 4000)
+    ? `Um ou mais produtos foram encontrados acima de R$ 4.000,00` 
+    : `Nenhum produto foi encontrado acima de R$ 4.000,00`;
+tela(produtosAcima);
 
 const somaProdutos = precos.reduce((acumulador, preco) => acumulador + preco, 0);
-console.log(`O valor total de todos os produtos é R$ ${somaProdutos},00`);
+tela(`O valor total de todos os produtos é R$ ${somaProdutos},00`);
