@@ -119,6 +119,19 @@ console.log(Object.keys(produtoObj));   // ["nome", "preco", "marca"]
 console.log(Object.values(produtoObj)); // ["Notebook", 4500, "Dell"]
 
 
+//Desestruturango objetos
+const person = {
+  firstName: "John",
+  lastName: "Doe",
+  age: 50,
+  eyeColor: "blue"
+};
+
+// Destructuring Assignment
+let { firstName, age } = person;
+console.log(`${firstName} possui ${age} anos.`); // John possui 50 anos.
+
+
 //ARRAYS: Array de objetos
 
 // Lista de produtos de uma loja
