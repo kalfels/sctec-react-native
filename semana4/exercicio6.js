@@ -17,10 +17,12 @@ Utilize o método reduce() para somar todos os preços
 */
 
 const precos = [80, 150, 950, 4200, 320];
+let tela = texto => console.log(texto);
 
-const produtos = precos.every((preco) => preco >= 50);
-const resposta1 = (produtos === true) ? `Os produtos verificados custam mais que R$ 50,00` : `Os produtos verificados possuem um ou mais com valor abaixo de R$ 50,00`;
-console.log(resposta1);
+const produtos = precos.every((preco) => preco > 50) 
+    ? `Os produtos verificados custam mais que R$ 50,00` 
+    : `Os produtos verificados possuem um ou mais com valor abaixo de R$ 50,00`;
+tela(produtos);
 
 const produtosAcima = precos.some((preco) => preco > 4000);
 const resposta2 = (produtosAcima === true) ? `Um ou mais produtos foram encontrados acima de R$ 4.000,00` : `Nenhum produto foi encontrado acima de R$ 4.000,00`;
