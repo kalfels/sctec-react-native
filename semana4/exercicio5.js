@@ -134,3 +134,4 @@ const produtos3 = [
 console.log(produtos3[0]); // { nome: "Camiseta", preco: 49.90, estoque: 15 }
 console.log(produtos3[0].nome); // "Camiseta"
 console.log(produtos3[2].preco); // 199.90
+
