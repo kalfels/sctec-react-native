@@ -135,3 +135,20 @@ console.log(produtos3[0]); // { nome: "Camiseta", preco: 49.90, estoque: 15 }
 console.log(produtos3[0].nome); // "Camiseta"
 console.log(produtos3[2].preco); // 199.90
 
+/*
+Utilize o método Object.keys() para exibir no terminal todas as propriedades do objeto.
+Utilize o método Object.values() para exibir todos os valores armazenados no objeto.
+*/
+const usuario = {
+  nome: "Jorge",
+  idade: 24,
+  email: "jorge@email.com",
+  cidade: "Florianopolis",
+  profissao: "Desenvolvedor"
+};
+console.log(Object.keys(usuario)); // ["nome", "idade", "email", "cidade", "profissao"]
+console.log(Object.values(usuario)); // ["Jorge", 24, "
+
+Object.keys(usuario).forEach((propriedade) => {
+  console.log(`${propriedade}: ${usuario[propriedade]}`);
+});
