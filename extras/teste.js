@@ -1,50 +1,53 @@
 class CPF {
-  constructor(cpf) {
-    if (typeof cpf !== 'string' && typeof cpf !== 'number') {
-      throw new Error('CPF inválido.');
+    constructor(cpf) {
+        this.validateInputType(cpf);
+        this.cpf = String(cpf).replace(/[^0-9]/g, '');
+        this.validateLength();
     }
 
-    this.cpf = String(cpf).replace(/[^0-9]/g, '');
-
-    if (this.cpf.length !== 11) {
-      throw new Error('O CPF deve ter exatamente 11 números,');
-    }
-  }
-
-  validar() {
-    // Bloqueia CPFs com todos os dígitos iguais (ex: 111.111.111-11)
-    if (/^(\d)\1+$/.test(this.cpf)) {
-      return false;
+    validateInputType(cpf) {
+        if (typeof cpf !== 'string' && typeof cpf !== 'number') {
+            throw new Error('CPF inválido.');
+        }
     }
 
-    let soma = 0;
-    let resto;
-
-    // 1º Dígito Verificador
-    for (let i = 0; i < 9; i++) {
-      soma += parseInt(this.cpf.substring(i, i + 1)) * (10 - i);
-    }
-    
-    resto = (soma * 10) % 11;
-    if (resto === 10 || resto === 11) resto = 0;
-    if (resto !== parseInt(this.cpf.substring(9, 10))) {
-      return false;
+    validateLength() {
+        if (this.cpf.length !== 11) {
+            throw new Error('O CPF deve ter exatamente 11 números');
+        }
     }
 
-    // 2º Dígito Verificador
-    soma = 0;
-    for (let i = 0; i < 10; i++) {
-      soma += parseInt(this.cpf.substring(i, i + 1)) * (11 - i);
-    }
-    
-    resto = (soma * 10) % 11;
-    if (resto === 10 || resto === 11) resto = 0;
-    if (resto !== parseInt(this.cpf.substring(10, 11))) {
-      return false;
+    validar() {
+        const identicalDigits = /^(\d)\1+$/;
+        const digitsSum = this.calculateSumOfDigits();
+        const firstDigitVerifier = this.getDigitVerifier(9, digitsSum);
+        const secondDigitVerifier = this.getDigitVerifier(10, this.calculateSumOfDigits([firstDigitVerifier]));
+        
+        if (identicalDigits.test(this.cpf) || firstDigitVerifier !== parseInt(this.cpf[9]) 
+            || secondDigitVerifier !== parseInt(this.cpf[10])) {
+            return false;
+        }
+
+        return true;
     }
 
-    return true;
-  }
+    calculateSumOfDigits(digitVerifiers = []) {
+        let sum = 0;
+        for (let i = 0; i < this.cpf.length - digitVerifiers.length; i++) {
+            sum += parseInt(this.cpf[i]) * (this.cpf.length + 1 - i - digitVerifiers.length);
+        }
+        
+        digitVerifiers.forEach((verifier, index) => {
+            sum += verifier * (12 - this.cpf.length - index); // Adjust the weight according to CPF length
+        });
+
+        return sum;
+    }
+
+    getDigitVerifier(digitPosition, digitsSum) {
+        const resto = (digitsSum * 10) % 11;
+        return resto === 10 || resto === 11 ? 0 : resto;
+    }
 }
 
 // Exemplo de uso:
