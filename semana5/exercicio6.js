@@ -6,77 +6,37 @@
  * Implementação de herança para as classes Usuario, Cliente e Entregador.
  */
 
+import { Cliente } from './classes/Cliente';
+import { Entregador } from './classes/Entregador';
 
-class Usuario {
-  constructor(nome, email, telefone) {
-    this.nome = nome;
-    this.email = email;
-    this.telefone = telefone || "Não informado";
-  }
+const usuariosCadastrados = [
+  new Cliente("Carlos Silva", "carlos@email.com", "(47) 99999-8888", "Rua das Flores, 123", 500.00),
+  new Cliente("Mariana Souza", "mariana@email.com", "", "Av. Brasil, 456", 800.00),
+  new Entregador("João Santos", "joao@email.com", "(47) 98888-7777", "Moto Honda", "ABC-1234", 12.50),
+  new Entregador("Lucas Oliveira", "lucas@email.com", "", "Yamaha Fazer", "XYZ-5678", 15.00)
+];
 
-  exibirDados() {
-    console.log(`Nome: ${this.nome}`);
-    console.log(`E-mail: ${this.email}`);
-    console.log(`Telefone: ${this.telefone}`);
-  }
-}
+console.log("\n=== LISTAGEM GERAL DE USUÁRIOS ===");
+usuariosCadastrados.forEach((usuario) => {
+  usuario.exibirDados();
+  console.log("-----------------------------------");
+});
 
-class Cliente extends Usuario {
-  constructor(nome, email, telefone, endereco, limiteCredito) {
-    super(nome, email, telefone);
-    this.endereco = endereco;
-    this.limiteCredito = limiteCredito;
-  }
-
-  calcularDesconto(valorCompra) {
-    if (valorCompra > 100) {
-      return valorCompra * 0.10;
-    }
-    return 0;
-  }
-
-  exibirDadosCliente() {
-    this.exibirDados();
-    console.log(`Endereço: ${this.endereco}`);
-    console.log(`Limite de Crédito: R$ ${this.limiteCredito.toFixed(2)}`);
-  }
-}
-
-class Entregador extends Usuario {
-  constructor(nome, email, telefone, veiculo, placa, valorPorEntrega) {
-    super(nome, email, telefone);
-    this.veiculo = veiculo;
-    this.placa = placa;
-    this.valorPorEntrega = valorPorEntrega;
-  }
-
-  calcularGanhoDia(qtdEntregas) {
-    return qtdEntregas * this.valorPorEntrega;
-  }
-
-  exibirDadosEntregador() {
-    this.exibirDados();
-    console.log(`Veículo: ${this.veiculo}`);
-    console.log(`Placa: ${this.placa}`);
-    const ganhosEntregas = this.calcularGanhoDia(5);
-    console.log(`Ganho do dia (5 entregas): R$ ${ganhosEntregas.toFixed(2)}`);
-  }
-}
-
-console.log("=== DADOS DO CLIENTE 1 ===");
+console.log("\n=== DADOS DO CLIENTE 1 ===");
 const cliente1 = new Cliente("Carlos Silva", "carlos@email.com", "(47) 99999-8888", "Rua das Flores, 123", 500.00);
 cliente1.exibirDadosCliente();
-console.log(`Desconto para compra de R$ 150,00: R$ ${cliente1.calcularDesconto(150).toFixed(2)}`);
 
-console.log("\n=== DADOS DO CLIENTE 2 ===");
-const cliente2 = new Cliente("Mariana Souza", "marisouza@gmail,.com", "(47) 98888-7777", "Av. Brasil, 456", 300.00);
-cliente2.exibirDadosCliente();
-console.log(`Desconto para compra de R$ 80,00: R$ ${cliente2.calcularDesconto(80).toFixed(2)}`);
+console.log("\n=== DADOS ESPECÍFICOS DO CLIENTE ===");
+usuariosCadastrados[1].exibirDadosCliente();
 
-console.log("\n=== DADOS DO ENTREGADOR 1 ===");
-const entregador1 = new Entregador("João Santos", "joao@email.com", "", "Moto Honda", "ABC-1234", 12.50);
-entregador1.exibirDadosEntregador();
+console.log("\n=== DADOS ESPECÍFICOS DO ENTREGADOR ===");
+usuariosCadastrados[2].exibirDadosEntregador();
 
-console.log("\n=== DADOS DO ENTREGADOR 2 ===");
-const entregador2 = new Entregador("Fernanda Lima", "fernanda@gmail.com", "(47) 97777-6666", "Carro Toyota", "XYZ-5678", 25.00);
-entregador2.exibirDadosEntregador();
+
+// DESAFIO EXTRA (opcional)
+console.log("\n=== DESAFIO EXTRA ===");
+const descontoCliente = usuariosCadastrados[0].calcularDesconto(250);
+console.log(`Desconto do cliente para compra de R$ 250,00: R$ ${descontoCliente.toFixed(2)}`);
+
+const ganhoEntregador = usuariosCadastrados[2].calcularGanhoDia(8);
+console.log(`Ganho do entregador (8 entregas): R$ ${ganhoEntregador.toFixed(2)}`);

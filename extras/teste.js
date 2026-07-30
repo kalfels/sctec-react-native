@@ -52,9 +52,6 @@ class CPF {
 
 // Exemplo de uso:
 try {
-  const cpf1 = new CPF('02220991946');
-  console.log(`Resultado para CPF1: ${cpf1.validar()}`); // true (se for válido matematicamente)
-
   const cpf2 = new CPF('11111111111');
   console.log(`Resultado para CPF2: ${cpf2.validar()}`); // false
 } catch (error) {
