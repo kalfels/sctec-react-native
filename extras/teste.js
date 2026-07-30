@@ -93,22 +93,9 @@ class CPF {
 
 // Exemplo de uso:
 try {
-  console.log("-----------------------------------");
-  console.log("Testando CPFs fornecidos pelo usuário:");
-
-  // Teste 1: O CPF que deveria ser validado (Passará se a lógica matemática estiver correta)
   const cpf1 = new CPF('02220991946');
-  console.log(`Resultado para CPF1 (022...): ${cpf1.validar()}`);
+  console.log(`Resultado para CPF1: ${cpf1.validar()}`); // true (se for válido matematicamente)
 
-  // Teste 2: Outro exemplo solicitado pelo usuário (Passará se a lógica matemática estiver correta)
-  const cpf3 = new CPF('99409931029');
-  console.log(`Resultado para CPF3 (994...): ${cpf3.validar()}`);
-
-  // Teste 3: Um exemplo conhecido como válido matematicamente
-  const cpfValidoExemplo = new CPF('37045893274');
-  console.log(`Resultado para CPF Válido (370...): ${cpfValidoExemplo.validar()}`);
-
-  // Teste 4: CPF com dígitos repetidos (deve retornar FALSE)
   const cpf2 = new CPF('11111111111');
   console.log(`Resultado para CPF2 (repetido): ${cpf2.validar()}`); // false
 } catch (error) {

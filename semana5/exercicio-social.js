@@ -1,4 +1,6 @@
-const prompt = require('prompt-sync')({sigint: true});
+//npm install prompt-sync
+
+const prompt = require('prompt-sync')();
 
 function criarSistemaCurtidas() {
     let curtidas = 0;
@@ -28,7 +30,7 @@ function criarSistemaCurtidas() {
 
 function menu() {
     const sistemaCurtidas = criarSistemaCurtidas();
-    let escolha;
+    let opcao;
 
     do {
         console.log("\n========== POST ==========");
@@ -37,9 +39,9 @@ function menu() {
         console.log("3 - Exibir curtidas ❤️");
         console.log("4 - Sair");
 
-        escolha = prompt("Escolha: ");
+        opcao = prompt("Escolha: ");
 
-        switch (escolha) {
+        switch (opcao) {
             case "1":
                 sistemaCurtidas("curtir");
                 break;
@@ -55,7 +57,7 @@ function menu() {
             default:
                 console.log("Opção inválida. Tente novamente.");
         }
-    } while (escolha !== "4");
+    } while (opcao !== "4");
 }
 
 menu();
