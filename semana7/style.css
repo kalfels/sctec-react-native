@@ -1,0 +1,51 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f2f2f2;
+    display: flex;     /* Centraliza o conteúdo da página vertical e horizontalmente */
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.card {
+    width: 300px;
+    background-color: #ffffff;
+    padding: 24px;                 /* Espaçamento interno */
+    margin: 20px auto;             /* Margem externa */
+    border: 1px solid #e0e0e0;   /* Borda discreta */
+    border-radius: 12px;           /* Cantos arredondados */
+
+    /* Estilização complementar */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* Sombra suave para dar profundidade */
+    text-align: center;                           /* Centraliza os textos e botão */
+}
+
+.card h1 {
+    font-size: 1.5rem;
+    color: #1a1a1a;
+    margin-top: 0;
+    margin-bottom: 12px;
+}
+
+.card p {
+    font-size: 0.95rem;
+    color: #666666;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+.card button {
+    background-color: #0066cc;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.card button:hover {
+    background-color: #0052a3;
+}
