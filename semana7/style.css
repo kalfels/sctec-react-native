@@ -1,22 +1,50 @@
-h1 {
-	color: #0f755a;
-	font-size: 40px;
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f2f2f2;
+    display: flex;     /* Adiantando o conteudo haha */
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
 }
 
-p {
-	font-size: 18px;
-	line-height: 1.5;
+.card {
+    width: 300px;
+    background-color: #ffffff;
+    padding: 24px;
+    margin: 20px auto;
+    border: 3px solid #4a4a4a;
+    border-radius: 12px;
+    box-shadow: none;
+    text-align: left;
 }
 
-.destaque {
-	color: #d35400;
-	font-weight: 700;
+.card h1 {
+    font-size: 1.5rem;
+    color: #1a1a1a;
+    margin-top: 0;
+    margin-bottom: 12px;
 }
 
-#roteiro {
-	background-color: #f2f7ff;
+.card p {
+    font-size: 0.95rem;
+    color: #666666;
+    line-height: 1.5;
+    margin-bottom: 20px;
 }
 
-img {
-	width: 300px;
+.card button {
+    background-color: #f1f1f1;
+    color: #111111;
+    border: 1px solid #9a9a9a;
+    padding: 6px 12px;
+    border-radius: 2px;
+    font-weight: 400;
+    cursor: hand;
+    transition: background-color 0.2s ease;
+}
+
+.card button:hover {
+    background-color: #e5e5e5;
+    cursor: pointer;
 }

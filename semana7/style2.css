@@ -1,0 +1,22 @@
+h1 {
+	color: #0f755a;
+	font-size: 40px;
+}
+
+p {
+	font-size: 18px;
+	line-height: 1.5;
+}
+
+.destaque {
+	color: #d35400;
+	font-weight: 700;
+}
+
+#roteiro {
+	background-color: #f2f7ff;
+}
+
+img {
+	width: 300px;
+}
