@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FomeJá</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <div class="app">
+      <header class="topo">
+        <p class="endereco">Entregar em</p>
+        <h1 id="titulo-app">FomeJá</h1>
+        <p id="subtitulo">Rua das Palmeiras, 120</p>
+      </header>
+
+      <input
+        id="busca"
+        type="search"
+        placeholder="Buscar restaurante ou prato..."
+      />
+
+      <section class="categorias">
+        <button class="categoria ativa">Todos</button>
+        <button class="categoria">Hambúrguer</button>
+        <button class="categoria">Pizza</button>
+        <button class="categoria">Japonês</button>
+        <button class="categoria">Açaí</button>
+      </section>
+
+      <main>
+        <article class="restaurante-card">
+          <span class="emoji">🍔</span>
+          <div class="info">
+            <h2 class="nome-restaurante">Burger Lab</h2>
+            <p class="detalhe">Hambúrguer · 4.8 ★ · 25-35 min</p>
+            <p class="preco">Entrega R$ 5,99</p>
+          </div>
+          <button class="botao-pedir">Pedir</button>
+        </article>
+
+        <article class="restaurante-card">
+          <span class="emoji">🍣</span>
+          <div class="info">
+            <h2 class="nome-restaurante">Sushi House</h2>
+            <p class="detalhe">Japonês · 4.6 ★ · 40-50 min</p>
+            <p class="preco">Entrega R$ 8,90</p>
+          </div>
+          <button class="botao-pedir">Pedir</button>
+        </article>
+
+        <article class="restaurante-card" id="promocao">
+          <span class="selo">Promoção</span>
+          <span class="emoji">🍕</span>
+          <div class="info">
+            <h2 class="nome-restaurante">Pizza da Esquina</h2>
+            <p class="detalhe">Pizza · 4.9 ★ · 30-40 min</p>
+            <p class="preco">Entrega grátis</p>
+          </div>
+          <button class="botao-pedir">Pedir</button>
+        </article>
+
+        <article class="restaurante-card">
+          <span class="emoji">🍇</span>
+          <div class="info">
+            <h2 class="nome-restaurante">Açaí do Parque</h2>
+            <p class="detalhe">Açaí · 4.7 ★ · 15-25 min</p>
+            <p class="preco">Entrega R$ 3,50</p>
+          </div>
+          <button class="botao-pedir">Pedir</button>
+        </article>
+
+        <article class="restaurante-card">
+          <span class="emoji">🍝</span>
+          <div class="info">
+            <h2 class="nome-restaurante">Cantina da Nonna</h2>
+            <p class="detalhe">Italiana · 4.5 ★ · 35-45 min</p>
+            <p class="preco">Entrega R$ 6,00</p>
+          </div>
+          <button class="botao-pedir">Pedir</button>
+        </article>
+
+        <article class="restaurante-card">
+          <span class="emoji">🌮</span>
+          <div class="info">
+            <h2 class="nome-restaurante">Taco Loco</h2>
+            <p class="detalhe">Mexicana · 4.4 ★ · 20-30 min</p>
+            <p class="preco">Entrega R$ 7,49</p>
+          </div>
+          <button class="botao-pedir">Pedir</button>
+        </article>
+      </main>
+
+      <p id="resultado" class="resultado">
+        Abra o Console (F12) e complete os desafios em <code>script.js</code>
+      </p>
+    </div>
+  </body>
+</html>

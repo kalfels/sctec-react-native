@@ -1,0 +1,149 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #ece7e1;
+  color: #1c1917;
+}
+
+.app {
+  max-width: 430px;
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 24px 16px 32px;
+  background: #f7f4f0;
+}
+
+.topo {
+  margin-bottom: 16px;
+}
+
+.endereco {
+  font-size: 12px;
+  color: #78716c;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+#titulo-app {
+  margin: 4px 0;
+  font-size: 28px;
+}
+
+#subtitulo {
+  color: #57534e;
+  font-size: 14px;
+}
+
+#busca {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #d6d3d1;
+  border-radius: 10px;
+  background: #fff;
+  font-size: 15px;
+}
+
+.categorias {
+  display: flex;
+  gap: 8px;
+  margin: 16px 0;
+  overflow-x: auto;
+}
+
+.categoria {
+  flex-shrink: 0;
+  padding: 8px 14px;
+  border: none;
+  border-radius: 999px;
+  background: #e7e5e4;
+  color: #44403c;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.categoria.ativa {
+  background: #ea580c;
+  color: #fff;
+}
+
+.restaurante-card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+  padding: 14px;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.emoji {
+  font-size: 32px;
+}
+
+.info {
+  flex: 1;
+}
+
+.nome-restaurante {
+  font-size: 16px;
+  margin-bottom: 4px;
+}
+
+.detalhe,
+.preco {
+  font-size: 13px;
+  color: #57534e;
+}
+
+.preco {
+  margin-top: 4px;
+  font-weight: bold;
+  color: #292524;
+}
+
+.botao-pedir {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 8px;
+  background: #ea580c;
+  color: #fff;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.selo {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  padding: 3px 8px;
+  border-radius: 999px;
+  background: #f97316;
+  color: #fff;
+  font-size: 11px;
+  font-weight: bold;
+}
+
+#promocao {
+  border: 2px solid #f97316;
+}
+
+.resultado {
+  margin-top: 20px;
+  padding: 12px;
+  border-radius: 10px;
+  background: #fff7ed;
+  color: #9a3412;
+  font-size: 13px;
+}
+
+code {
+  font-size: 12px;
+}
