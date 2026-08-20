@@ -14,7 +14,7 @@ body {
 .app {
   max-width: 430px;
   min-height: 100vh;
-  margin: 0 auto;
+  margin: 0;
   padding: 24px 16px 32px;
   background: #f7f4f0;
 }
@@ -151,4 +151,13 @@ body {
 
 code {
   font-size: 12px;
+}
+
+.pedido-ativo {
+  border: 2px solid #014315;
+  background: #d1fae5;
+}
+
+.pedido-ativo .botao-pedir {
+  background: #014315;
 }

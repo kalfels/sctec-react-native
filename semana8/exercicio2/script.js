@@ -35,15 +35,39 @@ console.log(categorias);
 // innerHTML para montar a mensagem do pedido
 
 const categoria = document.querySelectorAll(".categoria");
-const pedido = document.querySelectorAll(".pedido");
-const resultado = document.getElementById("banner-cupom");
+const botaoPedir = document.querySelectorAll(".botao-pedir");
 
 categoria.forEach((botao) => {
-  botao.addEventListener("click", () => {
+  botao.addEventListener("click", () => { // busca o botão clicado e adiciona a classe ativa, removendo de quem já tinha
     const ativa = document.querySelector(".categoria.ativa");
     if (ativa) {
       ativa.classList.remove("ativa");
     }
     botao.classList.add("ativa");
+  });
+});
+
+botaoPedir.forEach((botao) => {
+  botao.addEventListener("click", () => {
+    const card = botao.closest(".restaurante-card"); //closest encontra o elemento pai mais próximo com a classe restaurante-card
+    const pedidoAnterior = document.querySelector(
+      ".restaurante-card.pedido-ativo"
+    ); //encontra o card que já está com a classe pedido-ativo
+
+    if (pedidoAnterior && pedidoAnterior !== card) { // se já existe um card com pedido-ativo e não é o mesmo card, remove a classe e reseta o botão
+      pedidoAnterior.classList.remove("pedido-ativo");
+      const botaoAnterior = pedidoAnterior.querySelector(".botao-pedir");
+      botaoAnterior.style.background = "";
+      botaoAnterior.textContent = "Pedir";
+    }
+
+    //aplica a classe pedido-ativo no card clicado, muda o estilo do botão e atualiza o resultado
+    card.classList.add("pedido-ativo");
+    botao.style.background = "#014315";
+    botao.textContent = "Pedido!";
+
+    //informa o nome do restaurante no resultado
+    const nomeRestaurante = card.querySelector(".nome-restaurante").textContent;
+    resultado.innerHTML = `Pedido enviado para ${nomeRestaurante}!`;
   });
 });
