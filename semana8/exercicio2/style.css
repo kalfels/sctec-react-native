@@ -67,8 +67,13 @@ body {
   cursor: pointer;
 }
 
+.categoria:hover {
+  background: #f97316;
+  color: #fff;
+}
+
 .categoria.ativa {
-  background: #ea580c;
+  background: green;
   color: #fff;
 }
 

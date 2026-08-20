@@ -1,83 +1,49 @@
-// FomeJá — exercício de seleção de elementos no DOM
-// Abra o DevTools (F12) > aba Console para conferir cada desafio.
+// Exemplo: assim você encontra elementos na tela
 
-// ---------------------------------------------
-// 1. getElementById
-// O título da tela precisa mostrar que os restaurantes
-// estão abertos agora. Selecione #titulo-app e troque
-// o texto para "FomeJá — abertos agora".
-// ---------------------------------------------
-const title = document.getElementById("titulo-app");
-title.innerText = "FomeJá — abertos agora";
+const resultado = document.getElementById("resultado");
+const categorias = document.querySelectorAll(".categoria");
 
+console.log(resultado);
+console.log(categorias);
 
-// ---------------------------------------------
-// 2. getElementById
-// O campo de busca veio com um placeholder genérico.
-// Selecione #busca e altere o placeholder para
-// "Pizza, açaí, hambúrguer...".
-// ---------------------------------------------
+// Agora selecione os botões Pedir e continue o desafio
+//
+// Dica:
+// 1. Percorra as categorias com forEach e use addEventListener("click")
+// 2. No clique, tire a classe "ativa" de quem já tem e coloque no botão clicado
+// 3. Faça o mesmo com os botões Pedir
+// 4. No clique em Pedir: destaque o card (classList), mude o botão (style)
+//    e escreva a mensagem em #resultado (innerHTML)
 
-const searchField = document.getElementById("busca");
-searchField.placeholder = "Pizza, açaí, hambúrguer...";
+// FomeJá — De estático para dinâmico
 
-// ---------------------------------------------
-// 3. getElementsByClassName
-// O time de produto quer saber quantos restaurantes
-// aparecem na listagem. Selecione todos os cards com
-// a classe restaurante-card e mostre a quantidade
-// no console.
-// ---------------------------------------------
+// 1. Categorias
+// Ao clicar em um botão de categoria, somente ele fica com a classe ativa em verde
+// Os outros perdem essa classe
+// A classe ativa já existe no CSS
 
-const allRestaurantCards = document.getElementsByClassName("restaurante-card");
-console.log("Quantidade de restaurantes:", allRestaurantCards.length);
+// 2. Pedir
+// Crie no CSS a classe pedido-ativo, com borda verde e fundo clarinho
+// No JS, o card clicado recebe essa classe e o card anterior perde
+// O botão clicado muda com style: fundo verde e o texto Pedido!
+// O elemento resultado é preenchido com innerHTML, por exemplo: Pedido enviado para Burger Lab!
 
-// ---------------------------------------------
-// 4. getElementsByTagName
-// Quantos botões "Pedir" existem na página?
-// Selecione todas as tags button e mostre o total
-// no console. (Vai incluir os botões de categoria também.)
-// ---------------------------------------------
+// 3. Técnicas obrigatórias
+// addEventListener para escutar os cliques
+// classList para adicionar e remover classes
+// style para alterar pelo menos uma propriedade CSS
+// innerHTML para montar a mensagem do pedido
 
-const allButtons = document.getElementsByTagName("button");
-console.log("Quantidade de botões Pedir:", allButtons.length);
+const categoria = document.querySelectorAll(".categoria");
+const pedido = document.querySelectorAll(".pedido");
+const resultado = document.getElementById("banner-cupom");
 
-// ---------------------------------------------
-// 5. querySelector
-// Selecione APENAS o primeiro restaurante da lista
-// e mostre o nome dele no console.
-// Dica: o nome está em .nome-restaurante
-// ---------------------------------------------
-
-const firstRestaurant = document.querySelector(".restaurante-card");
-console.log("Primeiro restaurante:", firstRestaurant.querySelector(".nome-restaurante").innerText);
-
-// ---------------------------------------------
-// 6. querySelector
-// Existe um restaurante em promoção, com id="promocao".
-// Selecione esse card e mostre o nome no console.
-// ---------------------------------------------
-
-const promoRestaurant = document.querySelector("#promocao");
-console.log("Restaurante em promoção:", promoRestaurant.querySelector(".nome-restaurante").innerText);
-
-// ---------------------------------------------
-// 7. querySelectorAll
-// Percorra TODOS os restaurantes e imprima o nome
-// de cada um no console, um por linha.
-// Use forEach.
-// ---------------------------------------------
-
-const allRestaurants = document.querySelectorAll(".restaurante-card");
-allRestaurants.forEach((restaurant) => {
-  console.log("Restaurante:", restaurant.querySelector(".nome-restaurante").innerText);
+categoria.forEach((botao) => {
+  botao.addEventListener("click", () => {
+    const ativa = document.querySelector(".categoria.ativa");
+    if (ativa) {
+      ativa.classList.remove("ativa");
+    }
+    botao.classList.add("ativa");
+  });
 });
-
-// ---------------------------------------------
-// 8. Desafio final (opcional)
-// Atualize o parágrafo #resultado com um resumo, por exemplo:
-// "6 restaurantes encontrados. Promoção: Pizza da Esquina"
-// Use os elementos que você já selecionou acima.
-// ---------------------------------------------
-const result = document.getElementById("resultado");
-result.innerText = `${allRestaurants.length} restaurantes encontrados. Promoção: ${promoRestaurant.querySelector(".nome-restaurante").innerText}`;

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn">Clique aqui</button>
+    <button id="btn2" style="visibility: hidden;">Resetar</button>
+<p id="mensagem">Nenhum clique ainda.</p>
+
+<script>
+// Exemplo: contador de cliques
+
+let botao = document.getElementById("btn")
+let mensagem = document.getElementById("mensagem")
+let contador = 0
+
+botao.addEventListener("click", function () {
+ contador = contador + 1
+ mensagem.textContent = "Cliques: " + contador
+ if (contador >= 5) {
+    mensagem.textContent = "Você clicou 5 vezes!"
+    document.getElementById("btn2").style.visibility = "visible";
+ }
+
+});
+btn2.addEventListener("click", function () {
+    contador = 0
+    mensagem.textContent = "Nenhum clique ainda."
+    document.getElementById("btn2").style.visibility = "hidden";
+});
+</script>
+</body>
+</html>
