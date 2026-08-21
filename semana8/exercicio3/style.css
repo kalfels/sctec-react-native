@@ -1,0 +1,69 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #1c1917;
+  color: #fafaf9;
+}
+
+.app {
+  max-width: 430px;
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 24px 16px 32px;
+  background: #292524;
+}
+
+.topo {
+  margin-bottom: 20px;
+}
+
+.marca {
+  font-size: 12px;
+  color: #a8a29e;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+h1 {
+  margin: 6px 0 4px;
+  font-size: 28px;
+}
+
+.subtitulo {
+  color: #a8a29e;
+  font-size: 14px;
+}
+
+#catalogo {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.filme-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 16px;
+  border-radius: 12px;
+  background: #44403c;
+  font-size: 16px;
+}
+
+.botao-excluir {
+  flex-shrink: 0;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 8px;
+  background: #7f1d1d;
+  color: #fff;
+  font-size: 13px;
+  cursor: pointer;
+}
