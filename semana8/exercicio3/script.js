@@ -58,8 +58,30 @@ const catalogoExibicao = catalogo
 
 const catalogoContainer = document.getElementById("catalogo")
 
+// Cria cards "fantasma" reaproveitando a mesma estrutura do filme-card real
+function mostrarSkeleton(quantidade) {
+  catalogoContainer.innerHTML = ""
+
+  for (let i = 0; i < quantidade; i++) {
+    const card = document.createElement("article")
+    card.classList.add("filme-card", "skeleton-card")
+
+    const skeletonTexto = document.createElement("span")
+    skeletonTexto.classList.add("skeleton", "skeleton-texto")
+
+    const skeletonBotao = document.createElement("span")
+    skeletonBotao.classList.add("skeleton", "skeleton-botao")
+
+    card.appendChild(skeletonTexto)
+    card.appendChild(skeletonBotao)
+    catalogoContainer.appendChild(card)
+  }
+}
+
 function carregarCatalogo() {
-    catalogoExibicao.forEach((item) => {
+  catalogoContainer.innerHTML = ""
+
+  catalogoExibicao.forEach((item) => {
     const card = document.createElement("article")
     card.classList.add("filme-card")
 
@@ -82,12 +104,23 @@ function carregarCatalogo() {
   })
 }
 
-carregarCatalogo()
+function carregarCatalogoComSkeleton() {
+  mostrarSkeleton(catalogoExibicao.length)
+  recarregar.textContent = "..."
+  recarregar.disabled = true
+
+  setTimeout(() => {
+    carregarCatalogo()
+    recarregar.textContent = "Recarregar Catálogo"
+    recarregar.disabled = false
+  }, 2000)
+}
 
 // COMPLEMENTO PESSOAL
 const recarregar = document.getElementById("botao-recarregar")
+
+carregarCatalogoComSkeleton()
+
 recarregar.addEventListener("click", () => {
-  // Limpa o container antes de recarregar
-  catalogoContainer.innerHTML = ""
-  carregarCatalogo()
+  carregarCatalogoComSkeleton()
 })

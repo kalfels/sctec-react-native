@@ -79,6 +79,39 @@ h1 {
   background: #b91c1c;
 }
 
+.skeleton {
+  border-radius: 6px;
+  background-color: #57534e;
+  background-image: linear-gradient(
+    90deg,
+    #57534e 0px,
+    #78716c 40px,
+    #57534e 80px
+  );
+  background-size: 300px;
+  animation: brilho-skeleton 1.2s ease-in-out infinite;
+}
+
+.skeleton-texto {
+  width: 60%;
+  height: 16px;
+}
+
+.skeleton-botao {
+  flex-shrink: 0;
+  width: 64px;
+  height: 32px;
+}
+
+@keyframes brilho-skeleton {
+  0% {
+    background-position: -300px 0;
+  }
+  100% {
+    background-position: 300px 0;
+  }
+}
+
 #botao-recarregar {
   display: flex;
   align-items: center;
