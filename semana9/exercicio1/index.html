@@ -16,7 +16,7 @@
     </header>
 
     <!-- Requisito 3: Formulário -->
-    <form action="#" method="post">
+    <form id="form-credenciamento">
       
       <fieldset>
         <legend>Dados Pessoais</legend>
@@ -113,7 +113,8 @@
         <!-- Requisito 6 e 7: textarea + label associado -->
         <div class="form-group">
           <label for="apresentacao">Apresentação Pessoal ou Observações</label>
-          <textarea id="apresentacao" name="apresentacao" placeholder="Fale um pouco sobre você..."></textarea>
+          <textarea id="apresentacao" name="apresentacao" maxlength="100" placeholder="Fale um pouco sobre você..."></textarea>
+          <p id="contador" class="contador">0/100 caracteres</p>
         </div>
       </fieldset>
 
@@ -121,6 +122,10 @@
       <button type="submit">Enviar Inscrição</button>
 
     </form>
+  </div>
+
+  <div id="mensagem-sucesso" class="mensagem-sucesso" style="display: none;">
+    
   </div>
 
 </body>

@@ -24,3 +24,71 @@ botaoOlho.addEventListener("click", () => {
   botaoOlho.setAttribute("aria-pressed", String(!senhaVisivel))
   botaoOlho.setAttribute("aria-label", senhaVisivel ? "Mostrar senha" : "Ocultar senha")
 })
+
+//Contador de caracteres do textarea
+const apresentacao = document.getElementById("apresentacao")
+const contador = document.getElementById("contador")
+const limite = 100
+
+apresentacao.addEventListener("input", () => {
+  const quantidade = apresentacao.value.length
+  contador.textContent = quantidade + "/" + limite + " caracteres"
+
+  if (quantidade >= limite) {
+    contador.classList.add("contador-cheio")
+  } else {
+    contador.classList.remove("contador-cheio")
+  }
+})
+
+//Dados recuperados do formulário
+const form = document.querySelector("#form-credenciamento")
+
+form.addEventListener("submit", (event) => {
+  event.preventDefault()
+
+  //text, email, password, number e date
+  const nome = document.getElementById("nome").value
+  const email = document.getElementById("email").value
+  const senha = document.getElementById("senha").value
+  const idade = document.getElementById("idade").value
+  const dataNascimento = document.getElementById("data-nascimento").value
+  console.log(nome, email, senha, idade, dataNascimento)
+
+  //textarea
+  const apresentacaoTexto = document.getElementById("apresentacao").value
+  console.log(apresentacaoTexto)
+
+  //radio
+  const nivelSelecionado = document.querySelector('input[name="nivel"]:checked')
+  const nivel = nivelSelecionado ? nivelSelecionado.value : "não informado"
+  console.log(nivel)
+
+  //select
+  const trilha = document.getElementById("trilha").value
+  console.log(trilha)
+
+  //checkbox
+  const temasSelecionados = []
+  const temas = document.querySelectorAll('input[name="temas"]:checked')
+  temas.forEach(tema => temasSelecionados.push(tema.value))
+  console.log(temasSelecionados)
+
+  //Resumo exibido na página
+  const mensagemSucesso = document.getElementById("mensagem-sucesso")
+  mensagemSucesso.style.display = "block"
+  mensagemSucesso.innerHTML = `
+    <h2>Inscrição realizada com sucesso!</h2>
+    <ul>
+      <li><strong>Nome:</strong> ${nome}</li>
+      <li><strong>E-mail:</strong> ${email}</li>
+      <li><strong>Senha:</strong> ${senha}</li>
+      <li><strong>Idade:</strong> ${idade}</li>
+      <li><strong>Data de nascimento:</strong> ${dataNascimento}</li>
+      <li><strong>Trilha:</strong> ${trilha}</li>
+      <li><strong>Nível de conhecimento:</strong> ${nivel}</li>
+      <li><strong>Temas de interesse:</strong> ${temasSelecionados.join(", ") || "Nenhum tema selecionado"}</li>
+      <li><strong>Apresentação:</strong> ${apresentacaoTexto || "não informada"}</li>
+    </ul>
+  `
+})
