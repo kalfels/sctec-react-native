@@ -43,52 +43,75 @@ apresentacao.addEventListener("input", () => {
 
 //Dados recuperados do formulário
 const form = document.querySelector("#form-credenciamento")
+const container = document.getElementsByClassName("container")[0]
+
+const resumo = document.createElement("div");
+resumo.classList.add("mensagem-sucesso");
+resumo.id = "mensagem-sucesso";
+resumo.style.display = "none";
+
+container.after(resumo);
+
+//Abastecer as trilhas do select com os dados do array
+const trilhas = {
+  values: ["Front-end", "Back-end", "Mobile", "Data Science", "DevOps", "UI/UX Design"],
+  labels: ["Front-end", "Back-end", "Mobile", "Data Science", "DevOps", "UI/UX Design"]
+}
+
+const selectTrilha = document.getElementById("trilha")
+
+trilhas.values.forEach((value, index) => {
+  const option = document.createElement("option")
+  option.value = value
+  option.textContent = trilhas.labels[index]
+  selectTrilha.appendChild(option)
+})
 
 form.addEventListener("submit", (event) => {
   event.preventDefault()
 
-  //text, email, password, number e date
-  const nome = document.getElementById("nome").value
-  const email = document.getElementById("email").value
-  const senha = document.getElementById("senha").value
-  const idade = document.getElementById("idade").value
-  const dataNascimento = document.getElementById("data-nascimento").value
-  console.log(nome, email, senha, idade, dataNascimento)
-
-  //textarea
-  const apresentacaoTexto = document.getElementById("apresentacao").value
-  console.log(apresentacaoTexto)
-
   //radio
-  const nivelSelecionado = document.querySelector('input[name="nivel"]:checked')
-  const nivel = nivelSelecionado ? nivelSelecionado.value : "não informado"
-  console.log(nivel)
-
-  //select
-  const trilha = document.getElementById("trilha").value
-  console.log(trilha)
-
+  const nivel = document.querySelector('input[name="nivel"]:checked')
+  
   //checkbox
   const temasSelecionados = []
   const temas = document.querySelectorAll('input[name="temas"]:checked')
   temas.forEach(tema => temasSelecionados.push(tema.value))
   console.log(temasSelecionados)
 
-  //Resumo exibido na página
-  const mensagemSucesso = document.getElementById("mensagem-sucesso")
-  mensagemSucesso.style.display = "block"
-  mensagemSucesso.innerHTML = `
-    <h2>Inscrição realizada com sucesso!</h2>
-    <ul>
-      <li><strong>Nome:</strong> ${nome}</li>
-      <li><strong>E-mail:</strong> ${email}</li>
-      <li><strong>Senha:</strong> ${senha}</li>
-      <li><strong>Idade:</strong> ${idade}</li>
-      <li><strong>Data de nascimento:</strong> ${dataNascimento}</li>
-      <li><strong>Trilha:</strong> ${trilha}</li>
-      <li><strong>Nível de conhecimento:</strong> ${nivel}</li>
-      <li><strong>Temas de interesse:</strong> ${temasSelecionados.join(", ") || "Nenhum tema selecionado"}</li>
-      <li><strong>Apresentação:</strong> ${apresentacaoTexto || "não informada"}</li>
-    </ul>
-  `
+  //data
+  const dataNascimento = new Date(document.getElementById("data-nascimento").value)
+    .toLocaleDateString("pt-BR", { timeZone: "UTC" })
+
+  //Objeto com todos os dados capturados
+  const inscricao = {
+    nome: document.getElementById("nome").value,
+    email: document.getElementById("email").value,
+    senha: document.getElementById("senha").value,
+    idade: document.getElementById("idade").value,
+    dataNascimento: dataNascimento,
+    trilha: document.getElementById("trilha").value,
+    nivel: nivel ? nivel.value : "não informado",
+    temas: temasSelecionados,
+    apresentacao: document.getElementById("apresentacao").value
+  }
+  console.log(inscricao)
+
+  exibirResumo(inscricao)
 })
+
+//Resumo exibido na página
+function exibirResumo(dados) {
+  resumo.style.display = "block"
+  const H2 = document.createElement("h2")
+  H2.textContent = "Inscrição realizada com sucesso!"
+  resumo.appendChild(H2)
+  const UL = document.createElement("ul")
+  resumo.appendChild(UL)
+
+  for (const [chave, valor] of Object.entries(dados)) {
+    const LI = document.createElement("li")
+    LI.innerHTML = `<strong>${chave.charAt(0).toUpperCase() + chave.slice(1)}:</strong> ${Array.isArray(valor) ? valor.join(", ") : valor || "não informado"}`
+    UL.appendChild(LI)
+  }
+}
