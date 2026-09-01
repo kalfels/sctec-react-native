@@ -54,7 +54,7 @@ container.after(resumo);
 
 //Abastecer as trilhas do select com os dados do array
 const trilhas = {
-  values: ["Front-end", "Back-end", "Mobile", "Data Science", "DevOps", "UI/UX Design"],
+  values: ["frontend", "backend", "mobile", "datascience", "devops", "uiuxdesign"],
   labels: ["Front-end", "Back-end", "Mobile", "Data Science", "DevOps", "UI/UX Design"]
 }
 
@@ -69,36 +69,131 @@ trilhas.values.forEach((value, index) => {
 
 form.addEventListener("submit", (event) => {
   event.preventDefault()
+  const erros = []
+  const dados = new FormData(form)
+  const senha = dados.get("senha")
+  const temas = dados.getAll("temas")
+  const apresentacaoPessoal = dados.get("apresentacao")
 
-  //radio
-  const nivel = document.querySelector('input[name="nivel"]:checked')
-  
-  //checkbox
-  const temasSelecionados = []
-  const temas = document.querySelectorAll('input[name="temas"]:checked')
-  temas.forEach(tema => temasSelecionados.push(tema.value))
-  console.log(temasSelecionados)
+  //Validações
+  document.querySelectorAll(".input-error").forEach((campo) => {
+    campo.classList.remove("input-error")
+  })
+  document.querySelectorAll(".mensagem-erro").forEach((mensagem) => {
+    mensagem.remove()
+  })
+
+  const senhaValida = senha.length >= 8 && /\d/.test(senha)
+  const grupoTemas = document.getElementById("temas-interesse")
+  const apresentacaoValida = apresentacaoPessoal.trim().length >= 20
+  const idadeValida = validarIdade()
+  const erroSenha = "A senha deve ter pelo menos 8 caracteres e um número."
+  const erroTemas = "Selecione pelo menos um tema de interesse."
+  const erroApresentacao = "A apresentação deve ter pelo menos 20 caracteres, sem contar os espaços no início e no fim."
+  const erroIdade = "A idade informada não corresponde à data de nascimento."
+
+  if (!senhaValida) {
+    erros.push({
+      campo: campoSenha,
+      campoMensagem: campoSenha.closest(".senha-wrapper"),
+      campoId: "senha",
+      texto: erroSenha,
+      ordem: 1
+    })
+  }
+
+  if (temas.length === 0) {
+    erros.push({
+      campo: grupoTemas,
+      campoFoco: document.querySelector('input[name="temas"]'),
+      campoMensagem: grupoTemas,
+      campoId: "temas",
+      texto: erroTemas,
+      ordem: 2
+    })
+  }
+
+  if (!apresentacaoValida) {
+    erros.push({
+      campo: apresentacao,
+      campoMensagem: apresentacao,
+      campoId: "apresentacao",
+      texto: erroApresentacao,
+      ordem: 3
+    })
+  }
+
+  if (!idadeValida) {
+    erros.push({
+      campo: document.getElementById("idade"),
+      campoMensagem: document.getElementById("idade"),
+      campoId: "idade",
+      texto: erroIdade,
+      ordem: 4
+    })
+  }
+
+  if (erros.length > 0) {
+    console.log(erros)
+    erros.sort((erroA, erroB) => erroA.ordem - erroB.ordem)
+
+    erros.forEach((erro) => {
+      erro.campo.classList.add("input-error")
+      exibirMensagemErro(erro.campoMensagem, erro.campoId, erro.texto)
+    })
+
+    const campoFoco = erros[0].campoFoco || erros[0].campo
+    campoFoco.focus()
+
+    return
+  }
 
   //data
-  const dataNascimento = new Date(document.getElementById("data-nascimento").value)
+  const dataNascimento = new Date(dados.get("data_nascimento"))
     .toLocaleDateString("pt-BR", { timeZone: "UTC" })
 
   //Objeto com todos os dados capturados
   const inscricao = {
-    nome: document.getElementById("nome").value,
-    email: document.getElementById("email").value,
-    senha: document.getElementById("senha").value,
-    idade: document.getElementById("idade").value,
+    nome: dados.get("nome"),
+    email: dados.get("email"),
+    senha: senha,
+    idade: dados.get("idade"),
     dataNascimento: dataNascimento,
-    trilha: document.getElementById("trilha").value,
-    nivel: nivel ? nivel.value : "não informado",
-    temas: temasSelecionados,
-    apresentacao: document.getElementById("apresentacao").value
+    trilha: dados.get("trilha"),
+    nivel: dados.get("nivel") || "não informado",
+    temas: temas,
+    apresentacao: apresentacaoPessoal
   }
   console.log(inscricao)
 
   exibirResumo(inscricao)
 })
+
+function validarIdade() {
+  const campoIdade = document.getElementById("idade")
+  const campoDataNascimento = document.getElementById("data-nascimento")
+  const [ano, mes, dia] = campoDataNascimento.value.split("-").map(Number)
+  const hoje = new Date()
+  let idadeCalculada = hoje.getFullYear() - ano
+  const aniversarioAindaNaoOcorreu = hoje.getMonth() + 1 < mes
+    || (hoje.getMonth() + 1 === mes && hoje.getDate() < dia)
+
+  if (aniversarioAindaNaoOcorreu) {
+    idadeCalculada--
+  }
+
+  const idadeValida = Number(campoIdade.value) === idadeCalculada
+
+  return idadeValida
+}
+
+function exibirMensagemErro(campo, campoId, texto) {
+  const mensagemErro = document.createElement("label")
+  mensagemErro.classList.add("label-error", "mensagem-erro")
+  mensagemErro.htmlFor = campoId
+  mensagemErro.textContent = texto
+  campo.after(mensagemErro)
+}
 
 //Resumo exibido na página
 function exibirResumo(dados) {

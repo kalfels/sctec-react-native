@@ -175,6 +175,14 @@ textarea:focus {
     margin-top: 4px;
 }
 
+fieldset#temas-interesse.input-error {
+    border: 1px solid #d70015;
+    border-radius: 8px;
+    background-color: #ffe6e6;
+    padding: 10px;
+    margin-bottom: 0px;
+}
+
 .option-item {
     display: flex;
     align-items: center;
@@ -222,3 +230,13 @@ button[type="submit"]:focus-visible {
     outline: none;
     box-shadow: 0 0 0 3px rgba(0, 113, 227, 0.35);
 }
+
+.input-error {
+    border: 1px solid #d70015;
+    background-color: #ffe6e6;
+}
+.label-error {
+    color: #d70015;
+    font-weight: 600;
+    font-style: italic;
+}   
