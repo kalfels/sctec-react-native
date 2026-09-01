@@ -1,0 +1,338 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f3f1ee;
+  color: #1a1a1a;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* 5. Imagens Responsivas Globais */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+/* ==========================================================
+   ESTILOS MOBILE-FIRST (Estilo Padrão para telas menores que 768px)
+   ========================================================== */
+
+/* Cabeçalho Mobile: Eixo vertical */
+.topo {
+  background-color: #111111;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.25rem 1rem;
+  gap: 1rem;
+  /*
+  background-color: #111111;
+  color: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 36px;
+  padding: 1.25rem 1rem;
+  gap: 1rem
+  */
+}
+
+.marca {
+  font-size: 1.5rem;
+  font-weight: bold;
+  /* font-size: 24px; */
+}
+
+/* categorias do menu */
+.categorias { 
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.categorias a {
+  font-size: 0.9375rem;
+  padding: 0.5rem 0.75rem;
+  color: #e8e8e8;
+  /*font-size: 15px;
+  padding: 10px 20px;
+  color: #e8e8e8;*/
+}
+
+.categorias a:hover {
+  color: #ff5a1f;
+}
+
+/* Faixa Promocional */
+.faixa-promo {
+  background-color: #ff5a1f;
+  color: #ffffff;
+  /* font-size: 14px;
+  padding: 12px 36px; */
+  font-size: 0.875rem;
+  text-align: center;
+  padding: 0.75rem 1rem;
+}
+
+/* Seção Destaque Mobile: Eixo vertical */
+.destaque {
+  display: flex;
+  background-color: #ffffff;
+  /* align-items: center;
+  padding: 40px 36px; */
+  padding: 2rem 1rem;
+  gap: 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  flex-direction: column;
+}
+
+/*.destaque-texto {
+  width: 560px;
+  margin-right: 40px;
+}*/
+
+.selo {
+  font-size: 0.75rem;
+  color: #ff5a1f;
+  margin-bottom: 0.75rem;
+  text-transform: uppercase;
+  font-weight: bold;
+  /*
+  font-size: 12px;
+  color: #ff5a1f;
+  margin-bottom: 12px;
+  */
+}
+
+.destaque h1 {
+  font-size: 1.75rem;
+  margin-bottom: 0.875rem;
+  line-height: 1.2;
+  /*
+  font-size: 34px;
+  margin-bottom: 14px;
+  */
+}
+
+.destaque p {
+  font-size: 1rem;
+  color: #555555;
+  /*
+  font-size: 16px;
+  color: #555555;
+  */
+}
+
+/* Criada uma div no html contendo a classe para envolver a imagem */
+.destaque-imagem {
+  width: 100%;
+}
+
+.destaque img {
+  width: 100%;
+  max-height: 300px;
+  border-radius: 4px;
+  /*
+  width: 640px;
+  height: 380px;
+  */
+}
+
+/* Catálogo Mobile: Grid de 1 Coluna */
+.catalogo {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2.5rem 1rem;
+  /*
+  padding: 40px 36px 56px;
+  */
+}
+
+.catalogo h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  /*
+  font-size: 28px;
+  margin-bottom: 24px;
+  */
+}
+
+.grade {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  /*
+  display: flex;
+  */
+}
+
+.produto {
+  background-color: #ffffff;
+  padding: 1rem;
+  border-radius: 4px;
+  /*
+  width: 260px;
+  margin-right: 20px;
+  background-color: #ffffff;
+  padding: 16px;
+  */
+}
+
+.produto img {
+  width: 100%;
+  height: 220px;
+  margin-bottom: 0.875rem;
+  border-radius: 4px;
+  /*
+  width: 400px;
+  height: 320px;
+  margin-bottom: 14px;
+  */
+}
+
+.produto h3 {
+  font-size: 1.125rem;
+  margin-bottom: 0.25rem;
+  /*
+  font-size: 18px;
+  margin-bottom: 4px;
+  */
+}
+
+.categoria {
+  font-size: 0.8125rem;
+  color: #777777;
+  margin-bottom: 0.5rem;
+  /*
+  font-size: 13px;
+  color: #777777;
+  margin-bottom: 8px;
+  */
+}
+
+.preco {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-bottom: 0.875rem;
+  /*
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 14px;
+  */
+}
+
+.botao {
+  display: block;
+  text-align: center;
+  background-color: #111111;
+  color: #ffffff;
+  font-size: 0.875rem;
+  padding: 0.625rem 1.125rem;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+  /*
+  display: inline-block;
+  background-color: #111111;
+  color: #ffffff;
+  font-size: 14px;
+  padding: 10px 18px;
+  */
+}
+
+.botao:hover {
+  background-color: #ff5a1f;
+}
+
+/* Rodapé */
+.rodape {
+  background-color: #111111;
+  color: #cfcfcf;
+  padding: 2rem 1rem;
+  font-size: 0.875rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  /*
+  background-color: #111111;
+  color: #cfcfcf;
+  padding: 32px 36px;
+  font-size: 14px;
+  */
+}
+
+.rodape .marca {
+  color: #ffffff;
+  margin-bottom: 6px;
+}
+
+/* 2. Remoção de Larguras Fixas em Pixels (width: 1360px / 1680px) no CSS */
+.topo,
+.faixa-promo,
+.destaque,
+.destaque-texto,
+.catalogo,
+.produto,
+.rodape {
+  width: 100%;
+}
+
+
+/* ==========================================================
+   BREAKPOINTS DESKTOP-FIRST / REGRAS DE ADAPTAÇÃO
+   ========================================================== */
+
+/* Tablet & Monitores Pequenos (>= 768px) */
+@media (min-width: 768px) {
+  .topo {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 1.25rem 2.25rem;
+  }
+
+  .grade {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .produto {
+    width: calc(50% - 0.625rem); /* Exibe 2 produtos por linha */
+  }
+
+  .destaque {
+    flex-direction: row;
+    align-items: center;
+    padding: 2.5rem 2.25rem;
+  }
+
+  .destaque-texto, .destaque-imagem {
+    width: 50%;
+  }
+}
+
+/* Desktop (>= 1024px) */
+@media (min-width: 1024px) {
+  .produto {
+    width: calc(33.333% - 0.85rem); /* Exibe 3 produtos por linha */
+  }
+  .destaque h1 {
+    font-size: 2.25rem;
+  }
+  .rodape {
+    text-align: left;
+    padding: 2rem 2.25rem;
+  }
+}
