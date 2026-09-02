@@ -1,0 +1,63 @@
+Exercício resolvido e conceitos
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+1. Ajuste na Meta Tag Viewport no HTML
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  Para que serve: É a regra de ouro do design responsivo. Sem ela, os navegadores móbile renderizam a página simulando uma tela desktop (geralmente ~980px) e encolhem o conteúdo, tornando a leitura impossível. Com ela, a largura do layout passa a respeitar exatamente a largura da tela do dispositivo (device-width).
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+2. Remoção de Larguras Fixas em Pixels (width: 1360px / 1680px) no CSS
+
+  O que alterar: Remover todas as regras de width fixo em elementos como .topo, .faixa-promo, .destaque, .catalogo e .rodape. Substituir por width: 100% ou aplicar contêineres fluidos com max-width.
+
+  Para que serve: Definir larguras rígidas em pixels (como 1360px ou 1680px) impede a liquidez da página, criando barras de rolagem horizontal quebradas e indesejadas tanto em celulares quanto em monitores menores.
+
+  Criado no fim do arquivo, antes dos media queries
+
+.topo,
+.faixa-promo,
+.destaque,
+.catalogo,
+.rodape {
+  width: 100%;
+  max-width: 100%;
+}
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+3. Adoção da Estratégia Mobile-First e Media Queries
+
+  O que alterar: Escrever todo o CSS base fora de media queries pensando exclusivamente em uma tela pequena (celular). As regras de desktop ficam isoladas dentro de @media (min-width: ...) ao final do arquivo.
+
+  Para que serve: Separação clara da arquitetura CSS. O estilo mobile é leve e empilhado verticalmente por padrão. Quando a tela atinge breakpoints comuns (como 768px para tablets e 1024px para desktops), o CSS do breakpoint entra em ação para transformar o layout em colunas.
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+4. Conversão de Unidades Estáticas em Relativas (rem, em, %)
+O que alterar: Substituir px em fontes, paddings e margins por rem (relativo à fonte raiz do navegador, 1rem = 16px por padrão).
+
+Para que serve: Garante acessibilidade. Se um usuário aumentar a fonte padrão do sistema por necessidade visual, seu layout se adaptará proporcionalmente sem "encavalar" textos.
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+5. Flexibilidade e Ajuste de Imagens (max-width: 100% e object-fit: cover)
+O que alterar: Tornar imagens responsivas e usar object-fit.
+
+CSS
+img {
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+Para que serve: A propriedade max-width: 100% impede que imagens excedam o tamanho dos seus contêineres pai. Já o object-fit: cover faz com que a imagem preencha a área designada sem distorcer, cortar desproporcionalmente ou esticar as proporções originais do produto.
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+6. Uso Eficiente do Flexbox nos Eixos (flex-direction)
+O que alterar: No mobile, o padrão de contêineres flexíveis é flex-direction: column (eixo vertical). Em telas maiores, altera-se para flex-direction: row (eixo horizontal) e flex-wrap: wrap para acomodação automática dos cards.
+
+Para que serve: Permite rearranjar a direção e o alinhamento dos blocos conforme o espaço disponível no ecrã.
+

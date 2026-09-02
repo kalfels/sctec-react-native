@@ -38,7 +38,7 @@ const categoria = document.querySelectorAll(".categoria");
 const botaoPedir = document.querySelectorAll(".botao-pedir");
 
 categoria.forEach((botao) => {
-  botao.addEventListener("click", () => { // busca o botão clicado e adiciona a classe ativa, removendo de quem já tinha
+  botao.addEventListener("click", () => { // busca o botão clicado e adiciona a classe ativa, removendo de quem já tinhax
     const ativa = document.querySelector(".categoria.ativa");
     if (ativa) {
       ativa.classList.remove("ativa");

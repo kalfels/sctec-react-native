@@ -167,7 +167,6 @@ textarea:focus {
     cursor: pointer;
     padding: 0;
 }
-
 .options-group {
     display: flex;
     flex-direction: column;
@@ -205,7 +204,7 @@ textarea {
     min-height: 90px;
 }
 
-button[type="submit"] {
+input[type="submit"], button[type="submit"] {
     width: 100%;
     background-color: var(--accent-color);
     color: white;
@@ -218,6 +217,7 @@ button[type="submit"] {
     transition: background-color 0.2s ease, transform 0.1s ease;
 }
 
+input[type="submit"]:hover,
 button[type="submit"]:hover {
     background-color: var(--accent-hover);
 }
@@ -229,6 +229,15 @@ button[type="submit"]:active {
 button[type="submit"]:focus-visible {
     outline: none;
     box-shadow: 0 0 0 3px rgba(0, 113, 227, 0.35);
+}
+
+@media (max-width: 480px) {
+    .container {
+    padding: 24px;
+    }
+    .form-row {
+    grid-template-columns: 1fr;
+    }
 }
 
 .input-error {
