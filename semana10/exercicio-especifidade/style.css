@@ -1,0 +1,144 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f1ea;
+  color: #243038;
+}
+
+main {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 32px 16px 64px;
+}
+
+/* Enunciado (pode deixar como está) */
+.enunciado {
+  background-color: #ffffff;
+  padding: 28px;
+  margin-bottom: 32px;
+  border-left: 6px solid #d4b45a;
+}
+
+.selo {
+  color: #b8953a;
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.enunciado h1 {
+  font-size: 28px;
+  margin-bottom: 12px;
+}
+
+.enunciado p,
+.enunciado li {
+  font-size: 16px;
+  line-height: 1.5;
+  margin-bottom: 10px;
+}
+
+.enunciado h2 {
+  font-size: 18px;
+  margin: 20px 0 10px;
+}
+
+.enunciado ol,
+.enunciado ul {
+  padding-left: 22px;
+}
+
+.placar {
+  background-color: #1b3a4b;
+  color: #f4f1ea;
+  padding: 16px 16px 16px 36px;
+  margin-top: 8px;
+}
+
+.placar li {
+  margin-bottom: 6px;
+}
+
+code {
+  font-size: 0.95em;
+}
+
+/* Loja — layout. Os bugs estão nas regras de COR, mais abaixo. */
+.loja {
+  display: flex;
+  justify-content: center;
+}
+
+.card {
+  width: 360px;
+  background-color: #ffffff;
+  padding: 0 0 28px;
+}
+
+.card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  display: block;
+}
+
+.categoria {
+  color: #6b7280;
+  font-size: 14px;
+  padding: 0 24px;
+  margin-bottom: 12px;
+}
+
+.preco {
+  font-size: 22px;
+  font-weight: bold;
+  color: #1b3a4b;
+  padding: 0 24px;
+  margin-bottom: 20px;
+}
+
+.botao {
+  margin-left: 24px;
+  padding: 12px 28px;
+  border: none;
+  color: #ffffff;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* --------------------------------------------------------------------------
+   REGRAS EM CONFLITO
+   Estas regras miram os mesmos elementos. O navegador precisa escolher uma.
+   Não resolva com !important — ajuste o seletor ou apague a regra que
+   não deveria existir.
+   -------------------------------------------------------------------------- */
+
+/* Bug 1 — o título. Qual destas três vence? */
+p {
+  color: black;
+}
+
+.destaque {
+  color: blue;
+  font-size: 26px;
+  font-weight: bold;
+  padding: 20px 24px 4px;
+}
+
+/* Bug 2 — o botão. A regra azul está por último. Isso basta? */
+.card .botao {
+  background: blue;
+}
+
+/* Bug 3 — o preço antigo. A classe está aqui. Por que a cor não aplica? */
+.preco-antigo {
+  color: #6b7280;
+  text-decoration: line-through;
+  font-size: 14px;
+  padding: 0 24px;
+  margin-bottom: 4px;
+}

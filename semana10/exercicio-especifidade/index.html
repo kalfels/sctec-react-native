@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exercício — Especificidade no CSS</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <main>
+    <section class="enunciado">
+      <p class="selo">Semana 10 · Especificidade</p>
+      <h1>O CSS “não funciona”. Ache o motivo e corrija.</h1>
+      <p>
+        A loja abaixo já tem HTML e CSS. Três estilos estão errados, mas as regras
+        “certas” existem no arquivo. O navegador está escolhendo outra regra —
+        não porque o CSS está quebrado, e sim porque a <strong>especificidade</strong>
+        de um seletor está vencendo.
+      </p>
+      <p>
+        Abra o DevTools (F12), clique no elemento e veja qual declaração aparece
+        riscada. Depois calcule a pontuação <code>(inline, ID, classe, elemento)</code>
+        e ajuste o seletor. <strong>Não use <code>!important</code></strong>.
+      </p>
+
+      <h2>O que precisa ficar certo</h2>
+      <ol>
+        <li>
+          O nome do produto (<code>#titulo</code> + <code>.destaque</code>) deve
+          ficar <strong>azul</strong>, seguindo a classe <code>.destaque</code>.
+          Hoje está verde.
+        </li>
+        <li>
+          O botão <strong>Comprar</strong> deve ficar <strong>azul</strong>.
+          Hoje está vermelho — mesmo com a regra azul escrita por último no CSS.
+        </li>
+        <li>
+          O preço antigo deve ficar <strong>cinza e riscado</strong>.
+          Hoje está vermelho.
+        </li>
+      </ol>
+
+      <h2>Antes de mexer, calcule</h2>
+      <ul class="placar">
+        <li><code>p</code> → 0, 0, 0, ?</li>
+        <li><code>.destaque</code> → 0, 0, ?, 0</li>
+        <li><code>#titulo</code> → 0, ?, 0, 0</li>
+        <li><code>.botao</code> → 0, 0, ?, 0</li>
+        <li><code>.card .botao</code> → 0, 0, ?, 0</li>
+        <li><code>style="color: red"</code> no HTML → ?, 0, 0, 0</li>
+      </ul>
+    </section>
+
+    <section class="loja">
+      <article class="card">
+        <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=640&h=400&fit=crop"
+          alt="Tênis preto de corrida">
+        <p class="destaque">Tênis Pulse</p>
+        <p class="categoria">Corrida · edição limitada</p>
+        <p class="preco-antigo">R$ 499,00</p>
+        <p class="preco">R$ 349,00</p>
+        <button class="botao">Comprar</button>
+      </article>
+    </section>
+  </main>
+</body>
+
+</html>
