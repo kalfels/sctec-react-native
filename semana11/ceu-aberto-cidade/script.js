@@ -84,7 +84,7 @@ async function atualizarTela(chaveCidade, unidade) {
     const dados = await buscarDadosMetereologicos(infoCidade.lat, infoCidade.lon);
     
     const atual = dados.current;
-    const diário = dados.daily;
+    const diario = dados.daily;
 
     const tempAtual = Math.round(atual.temperature_2m);
     const tempSensacao = Math.round(atual.apparent_temperature);
@@ -118,9 +118,9 @@ async function atualizarTela(chaveCidade, unidade) {
 
     idsDias.forEach((id, index) => {
       const elemento = document.querySelector(`#${id}`);
-      if (elemento && diário.temperature_2m_max[index] !== undefined) {
-        const max = Math.round(diário.temperature_2m_max[index]);
-        const min = Math.round(diário.temperature_2m_min[index]);
+      if (elemento && diario.temperature_2m_max[index] !== undefined) {
+        const max = Math.round(diario.temperature_2m_max[index]);
+        const min = Math.round(diario.temperature_2m_min[index]);
 
         if (unidade === "fahrenheit") {
           elemento.textContent = `${paraFahrenheit(max)}° / ${paraFahrenheit(min)}°`;
