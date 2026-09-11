@@ -60,6 +60,18 @@ function paraFahrenheit(celsius) {
   return Math.round((celsius * 9) / 5 + 32);
 }
 
+function formatarDataPrevisao(dataISO, indice) {
+  const data = new Date(`${dataISO}T12:00:00`);
+
+  if (indice === 0) return "Hoje";
+
+  const diaSemana = new Intl.DateTimeFormat("pt-BR", {
+    weekday: "long"
+  }).format(data);
+
+  return `${diaSemana.charAt(0).toUpperCase()}${diaSemana.slice(1)}`;
+}
+
 // 2. Busca de dados em tempo real + 7 dias de previsão
 async function buscarDadosMetereologicos(lat, lon) {
   const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,relative_humidity_2m,apparent_temperature,weather_code,wind_speed_10m&daily=weather_code,temperature_2m_max,temperature_2m_min&timezone=auto&forecast_days=7`;
@@ -121,6 +133,17 @@ async function atualizarTela(chaveCidade, unidade) {
       if (elemento && diario.temperature_2m_max[index] !== undefined) {
         const max = Math.round(diario.temperature_2m_max[index]);
         const min = Math.round(diario.temperature_2m_min[index]);
+        const card = elemento.closest("article");
+        const dataISO = diario.time[index];
+        const dataFormatada = new Intl.DateTimeFormat("pt-BR", {
+          day: "numeric",
+          month: "long"
+        }).format(new Date(`${dataISO}T12:00:00`));
+
+        card.querySelector("h3").textContent = formatarDataPrevisao(dataISO, index);
+        card.querySelector("time").dateTime = dataISO;
+        card.querySelector("time").textContent = dataFormatada;
+        card.querySelector(".condicao-previsao").textContent = traduzirCondicaoWMO(diario.weather_code[index]);
 
         if (unidade === "fahrenheit") {
           elemento.textContent = `${paraFahrenheit(max)}° / ${paraFahrenheit(min)}°`;
