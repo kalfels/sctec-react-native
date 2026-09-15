@@ -90,6 +90,13 @@ h2 {
   font-size: 0.85rem;
 }
 
+.cidade-controles {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
 #cidade {
   padding: 8px 12px;
   border: 1px solid #d3e4f0;
@@ -97,6 +104,30 @@ h2 {
   background: #fff;
   color: #1d2b38;
   font-size: 1rem;
+}
+
+.botao-localizacao {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border: 1px solid #d3e4f0;
+  border-radius: 10px;
+  background: #fff;
+  color: #2d6a93;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s, border-color 0.2s, color 0.2s;
+}
+
+.botao-localizacao:hover {
+  background: #e1eff8;
+  border-color: #2d6a93;
+}
+
+.botao-localizacao svg {
+  flex-shrink: 0;
 }
 
 .agora-cabecalho {

@@ -1,7 +1,7 @@
        identification division.
        program-id.   sys000
                      is initial program.
-       author.       Eduardo Luiz Marques.
+       author.       Luis Fernando Kalfels.
        installation. MEVALE.
        date-written. 20/04/1998.
 
@@ -100,7 +100,7 @@
            move       0            to ws03-arqfil.
            open input senh.
            if ws77-statsenh not =  "00" 
-              string "PROBLEMAS NA ABERTURA DO ARQUIVO USUùRIOS... ",
+              string "PROBLEMAS NA ABERTURA DO ARQUIVO USUÔøΩRIOS... ",
               "ERRO = ", ws77-statsenh, delimited by size into ws77-msg
               perform p80-mostra-msg
               close fili
@@ -111,7 +111,7 @@
        p10-accept-usuario.
            read senh.
            if ws77-statsenh not =  "00"
-              move "USUùRIO NùO CADASTRADO NO ARQUIVO..." to ws77-msg
+              move "USUÔøΩRIO NÔøΩO CADASTRADO NO ARQUIVO..." to ws77-msg
               perform p80-mostra-msg
               close fili senh
               display " "             at 1680
@@ -125,7 +125,7 @@
        p11-accept-filial.
            read fili.
            if ws77-statfili not =  "00"
-              move "FILIAL NùO CADASTRADA NO ARQUIVO..." to ws77-msg
+              move "FILIAL NÔøΩO CADASTRADA NO ARQUIVO..." to ws77-msg
               perform p80-mostra-msg
               go p02-accept-filial.
 
@@ -160,7 +160,7 @@
            close fili senh.
 
            if ws77-data1    not =  ws77-data
-              string "DATA ATUAL CORRETA ù ", ws77-datavideo, "...",
+              string "DATA ATUAL CORRETA ÔøΩ ", ws77-datavideo, "...",
               delimited by size into ws77-msg
               perform p80-mostra-msg.
 
@@ -171,7 +171,7 @@
            display tela-moldura1.
            display tela-moldura4.
 
-           display "Utilize as Setas de Movimentaùùo...       " at 2412.
+           display "Utilize as Setas de MovimentaÔøΩÔøΩo...       " at 2412.
 
            perform varying ws77-con  from 01  by 01  until ws77-con > 13
            move spaces          to ws03-descricao(ws77-con)
@@ -188,7 +188,7 @@
            move "CONTROLE DE OFICINA .. (OFI)" to ws03-descricao(09).
            move "SISTEMA MALA DIRETA .. (MAL)" to ws03-descricao(10).
            move "FOLHA DE PAGAMENTO ... (FOL)" to ws03-descricao(11).
-           move "DISPONùVEL ........... (   )" to ws03-descricao(12).
+           move "DISPONÔøΩVEL ........... (   )" to ws03-descricao(12).
            move "CONTROLE OPERACIONAL . (SYS)" to ws03-descricao(13).
 
            compute ws77-lin     =  ws77-lin1        -    01.
@@ -216,7 +216,7 @@
        p14-seleciona-escolha.
            add        01        to ws77-lin              ws77-con.
 
-           display "=ù"            at line   ws77-lin    column 24
+           display "=ÔøΩ"            at line   ws77-lin    column 24
                                              with reverse-video
                                                   highlight.
 
@@ -269,7 +269,7 @@
            move ws77-con        to sen1-sistema.
            read sen1.
            if ws77-statsen1 not =  "00"
-              move "ACESSO NùO PERMITIDO A ESTE SISTEMA..." to ws77-msg
+              move "ACESSO NÔøΩO PERMITIDO A ESTE SISTEMA..." to ws77-msg
               perform p80-mostra-msg
               close sen1
               go p13-mostra-menu.
